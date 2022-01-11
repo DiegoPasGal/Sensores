@@ -5,31 +5,55 @@
 //---------------------------------------------------------------------------------------------------------------------------------------
 // inicio()
 //---------------------------------------------------------------------------------------------------------------------------------------
-
-int inicio(int inicioC){
+int inicio(){
+  
+  //Inicio es una funcion que sirve para elegir si calibrar o no
+  //Lo hace mediante un while() que espera a que se pulse un numero
+  //Si el numero es 1 se calibraran los sensores
+  //Si es 2 se saltara el calibrado
   char data=0;
   int pausa=0;
+  //Counter sirve para que se muestre el mensaje solo una vez
+  int counter = 0;
   if(pausa==0){
+    
     delay(1000); //Esperamos 1s
   }
+  
   while(pausa!=1){
+    //A partir del primer ciclo el mensaje no saldra a pantalla
+ 
+      Serial.println("");
+      Serial.print("Pulsa 1 si es la primera vez que enciendes el sensor, de lo contrario pulsa 2");
+      delay(5000);
+      Serial.println("");
+      Serial.print("Pulsa 1 si es la primera vez que enciendes el sensor, de lo contrario pulsa 2");
+      Serial.println("");
+    
+    //Serial.read es lo escrito 
     delay(500);
+    
     data = 0;
     data = Serial.read();
     delay(500);
-    Serial.print("  .");
+   
+    //si esta escrito 1 devuelve 0, el programa utiliza calibraciones
       if (data == '1'){
         pausa = 1;
-        inicioC =1;
+        return 0;
       }
-      if (data == '2'){
+      //si esta escrito 2 devuelve 1, el programa no utiliza calibraciones
+       if (data == '2'){
         pausa = 1;
-        inicioC = 2;
+       return 1;
       }
+      counter++;
+      
    }
+   
+      
    Serial.println("");
    Serial.println("");
-   return inicioC;
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------
@@ -419,4 +443,6 @@ bool alertaSalinidad(int mediaSalinidad){
   Serial.println("");
   return alerta;
 }
-  
+
+
+    
