@@ -16,8 +16,8 @@ Adafruit_ADS1115 ads1X15; //Constructor del ads1115
   const char WiFiSSID[] = "GTI1";
   const char WiFiPSK[] = "1PV.arduino.Toledo";
 #else //Conexion fuera de la UPV
-  const char WiFiSSID[] = "soy muy sabroso";
-  const char WiFiPSK[] = "soytuputito";
+  const char WiFiSSID[] = "mi wifi";
+  const char WiFiPSK[] = "12345";
 #endif
 #if defined(WiFi_CONNECTION_UPV) //Conexion UPV
   const char Server_Host[] = "proxy.upv.es";
